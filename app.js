@@ -1,22 +1,28 @@
-let btn = document.querySelector('button');
-let main = document.querySelector('.main');
+const arr = [
+  "Keep going",
+  "You are doing great",
+  "One step at a time",
+  "Progress over perfection",
+  "Small steps matter",
+  "Stay consistent",
+  "Believe in yourself",
+  "Learning every day",
+  "Don’t quit now",
+  "You’ve got this"
+];
 
-btn.addEventListener('click', function(){
-    let x = Math.random()*90;
-    let y = Math.random()*90;
+document.addEventListener("click", (e) => {
     let z = Math.random()*361;
-    let r = Math.floor(Math.random()*255);
-    let g = Math.floor(Math.random()*255);
-    let b = Math.floor(Math.random()*255);
+    let scl = Math.random()*3;
 
-    let div = document.createElement('div');
-    div.style.height = '100px';
-    div.style.width = '100px';
-    div.style.backgroundColor = `rgb(${r},${g},${b})`;
-    div.style.position = 'absolute';
-    div.style.left = x+'%';
-    div.style.top = y+'%'; 
-    div.style.rotate = z+'deg';
-    console.log(div);
-    main.appendChild(div);
+    let txt = Math.floor(Math.random()*arr.length); 
+    let h1 = document.createElement('h1');
+    h1.innerHTML = arr[txt];
+    h1.style.position = 'absolute';
+    h1.style.left = e.clientX + "px";
+    h1.style.top = e.clientY + "px";
+    h1.style.rotate = z+'deg';
+    h1.style.scale = scl;
+    console.log(h1);
+    document.body.appendChild(h1);
 })
