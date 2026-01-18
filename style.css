@@ -16,57 +16,80 @@ body{
 }
  
 .card{
+    height: 500px;
     width: 400px;
-    height: 200px;
-    background-color: aliceblue;
+    background-color: rgb(127, 157, 183);
+    padding: 20px 30px;
     border-radius: 10px;
-    padding: 30px;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
-}
-.outer{
-    background-color: rgb(197, 197, 197);
-    width: 100%;
-    height: 30px;
-    border-radius: 20px;
-    overflow: hidden; 
-}
-
-.inner{
-    width: 0%;
-    height: 100%;
-    background-color: greenyellow;
-    border-radius: 20px;
-}
-
-.text{
-    display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-h1{
-   font-size: 3rem;
+.card img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
-button{
-    background-color: green;
-    font-size: 1.5rem;
-    padding: 0.8rem 1.2rem;
-    border-radius: 20px;
-    border: none;
+.card h2{
+    font-size: 40px;
+    text-align: center;
 }
 
-button:active{
-    scale: 0.95;
+.card .love{
+    position: absolute;
+    font-size: 100px;
+    color: white;
+    opacity: 0;
+    scale: 1;
+    background-image: url("IntaLikeBg.jpg");
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: all cubic-bezier(.71,.2,.79,1.92) 0.4s;
+    rotate: -360deg;
 }
 
-p{
-    font-size: 1.2rem;
+.animate-heart{
+  animation: instaFloat 1.5s ease-out forwards;
 }
 
-span{
-    color: green;
+@keyframes instaFloat{
+  0%{
+    transform: translate(0,0) scale(1);
+    opacity:1;
+  }
+  25%{
+    transform: translate(-20px,-50px) scale(1.4);
+    opacity:1;
+  }
+  50%{
+    transform: translate(-20px,-120px) scale(1.4);
+    opacity:1;
+  }
+  75%{
+    transform: translate(-20px,-230px) scale(1.4);
+    opacity:1;
+  }
+  100%{
+    transform: translate(-20px,-300px) scale(1);
+    opacity:0;
+  }
+}
+
+.like{
+    display: flex;
+    gap: 50px;
+}
+
+.card .like #like{
+    font-size: 50px;
+    color: black;
+
 }
