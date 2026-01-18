@@ -1,28 +1,26 @@
-const arr = [
-  "Keep going",
-  "You are doing great",
-  "One step at a time",
-  "Progress over perfection",
-  "Small steps matter",
-  "Stay consistent",
-  "Believe in yourself",
-  "Learning every day",
-  "Don’t quit now",
-  "You’ve got this"
-];
+let btn = document.querySelector('button');
+let h1 = document.querySelector('h1');
+let inner = document.querySelector('.inner');
+let c =0;
 
-document.addEventListener("click", (e) => {
-    let z = Math.random()*361;
-    let scl = Math.random()*3;
+btn.addEventListener('click', function(){
+    btn.innerHTML="Downloading...";
+    btn.style.pointerEvents = 'none';
+    let stop = setInterval(() => {
+      c++;
+     h1.innerHTML = c+'%';
+     inner.style.width = c+'%';
+     console.log(c);
+    },50);
 
-    let txt = Math.floor(Math.random()*arr.length); 
-    let h1 = document.createElement('h1');
-    h1.innerHTML = arr[txt];
-    h1.style.position = 'absolute';
-    h1.style.left = e.clientX + "px";
-    h1.style.top = e.clientY + "px";
-    h1.style.rotate = z+'deg';
-    h1.style.scale = scl;
-    console.log(h1);
-    document.body.appendChild(h1);
+    setTimeout(() => {
+      clearInterval(stop);
+      btn.style.opacity=0.5;
+      btn.innerHTML="Download again!";
+      btn.style.pointerEvents = 'auto';
+      btn.style.opacity = 1;
+      c = 0;
+    },5000);
+
+     
 })
