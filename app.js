@@ -1,76 +1,47 @@
-let img = document.querySelector('img');
-let love = document.querySelector('i');
-let like = document.querySelector('#like');
-
-let isLiked = false;
-
-img.addEventListener('dblclick', function (e) {
-
-  if (!isLiked) {
-    isLiked = true;
-
-    //like button
-    like.style.background ="linear-gradient(45deg, #fd1d1d, #e1306c, #c13584, #833ab4)";
-    like.style.webkitBackgroundClip = "text";
-    like.style.webkitTextFillColor = "transparent";
-    //create hearts
-    const heart1 = document.createElement('i'); 
-    heart1.classList.add('ri-heart-3-fill', 'love', 'animate-heart');
-    
-    img.parentElement.appendChild(heart1);
-    const createHeart = (size, left) => {
-    const h = document.createElement('i');
-    h.classList.add('ri-heart-3-fill', 'love', 'animate-heart');
-    h.style.cssText = `
-    font-size:${size}px;
-    rotate:360deg;
-    left:${left}; 
-    top:50%;`;
-    return h;
-   };
-
-img.parentElement.append(
-  createHeart(50, '30%'),
-  createHeart(50, '60%')
-);
-
-
-    [heart1, heart2, heart3].forEach(heart => {
-    heart.addEventListener('animationend', () => {
-      heart.remove();
-    });
-  });
-
-
-  } else {
-    isLiked = false;
-
-    like.style.background = "none";
-    like.style.webkitTextFillColor = "black";
+const users = [
+  {
+    fullName: "Aarav Sharma",
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+    profession: "Frontend Developer",
+    description: "Passionate about building clean and responsive user interfaces using modern web technologies.",
+  },
+  {
+    fullName: "Nisha Roy",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+    profession: "UI/UX Designer",
+    description: "Designs intuitive user experiences with a strong focus on accessibility and aesthetics.",
+  },
+  {
+    fullName: "Rahul Verma",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+    profession: "Backend Developer",
+    description: "Specializes in building secure and scalable server-side applications.",
+  },
+  {
+    fullName: "Sneha Das",
+    image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+    profession: "Content Creator",
+    description: "Creates engaging content around technology, productivity, and personal growth.",
+  },
+  {
+    fullName: "Arjun Patel",
+    image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39",
+    profession: "Data Analyst",
+    description: "Transforms raw data into meaningful insights to support better decision-making.",
   }
-});
+];
 
+let sum ='';
+users.forEach(function(e){
+  sum = sum + `<div class="card">
+         <img src=${e.image} alt="">
+         <h3>${e.fullName}</h3>
+         <h4>${e.profession}</h4>
+         <p>${e.description}}</p>
+      </div>`
 
+})
 
-// img.addEventListener('dblclick',function(){
-//   if(isLiked === false){
-//      console.log("Love");
-//   love.style.opacity = 1;
-//   love.style.scale = '1';
-//   love.style.rotate = '0deg';
+let main = document.querySelector('main');
+main.innerHTML = sum;
 
-//   love.classList.add("animate-heart");
-
-//   // setTimeout(() => love.remove(), 1500);
-
-//   like.style.background ="linear-gradient(45deg, #fd1d1d, #e1306c, #c13584, #833ab4)";
-//   like.style.webkitBackgroundClip = "text";
-//   like.style.webkitTextFillColor = "transparent";
-
-//   isLiked = true;
-//   }
-//   else{
-//       like.style.color = 'black';
-//       isLiked = false;
-//   }
-// })
