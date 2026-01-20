@@ -1,47 +1,66 @@
-const users = [
-  {
-    fullName: "Aarav Sharma",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-    profession: "Frontend Developer",
-    description: "Passionate about building clean and responsive user interfaces using modern web technologies.",
-  },
-  {
-    fullName: "Nisha Roy",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-    profession: "UI/UX Designer",
-    description: "Designs intuitive user experiences with a strong focus on accessibility and aesthetics.",
-  },
-  {
-    fullName: "Rahul Verma",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-    profession: "Backend Developer",
-    description: "Specializes in building secure and scalable server-side applications.",
-  },
-  {
-    fullName: "Sneha Das",
-    image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-    profession: "Content Creator",
-    description: "Creates engaging content around technology, productivity, and personal growth.",
-  },
-  {
-    fullName: "Arjun Patel",
-    image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39",
-    profession: "Data Analyst",
-    description: "Transforms raw data into meaningful insights to support better decision-making.",
-  }
-];
+let main = document.querySelector('main');
+let cursor = document.querySelector('#Jerry');
+let h2 = document.querySelector('h2');
+let tom = document.querySelector('#Tom');
+let speech = document.querySelector('.Speech img');
 
-let sum ='';
-users.forEach(function(e){
-  sum = sum + `<div class="card">
-         <img src=${e.image} alt="">
-         <h3>${e.fullName}</h3>
-         <h4>${e.profession}</h4>
-         <p>${e.description}}</p>
-      </div>`
+function getTomCenter(el){
+    let rect = el.getBoundingClientRect();
+    return {
+    x: rect.left + rect.width / 2,
+    y: rect.top + rect.height / 2
+  };
+}
+
+let JerryNear = false;
+
+main.addEventListener('mousemove', function(e){
+   // move Jerry
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+
+   let tomCenter = getTomCenter(tom);
+   console.log(`Tom's position ${tomCenter.x}  ${tomCenter.y}`);
+
+   let dx = e.clientX - tomCenter.x;
+   let dy = e.clientY - tomCenter.y;
+   console.log(`Jerry's X position ${dx} $ Y position ${dy}`);
+
+   let distance = Math.sqrt(dx * dx + dy * dy);
+   console.log(`Distance ${distance}`);
+
+   if (distance < 180) {
+      JerryNear = true;
+      console.log("if");
+      h2.innerText = "HEY! Don’t come near me 😡";
+      speech.style.opacity = '1';
+      h2.style.opacity = '1';
+
+   } else if (distance < 300 && JerryNear) {
+      console.log("if else");
+      h2.innerText = "Good. And don’t come again 😤";
+      speech.style.opacity = '1';
+      h2.style.opacity = '1';
+
+   } else {
+      console.log("else");
+      h2.style.opacity = '0'; 
+      speech.style.opacity = '0';
+      JerryNear = false;
+   }
 
 })
 
-let main = document.querySelector('main');
-main.innerHTML = sum;
+// tom.addEventListener('mouseenter',function(){
+//     console.log("😠");
+//     h2.innerHTML = 'HEY! Don’t come near me 😠';
+//     speech.style.opacity = '1';
+//     h2.style.opacity = '1';
+// })
 
+// tom.addEventListener('mouseleave',function(){
+//     console.log("😤");
+//     h2.innerHTML = 'Good. And don’t come again 😤';
+//     speech.style.opacity = '1';
+//     h2.style.opacity = '1';
+// })
