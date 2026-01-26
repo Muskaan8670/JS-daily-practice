@@ -8,80 +8,31 @@ html,
 body{
     height: 100%;
     width: 100%;
-    background-color: rgb(239, 231, 231);
+}
+:root{
+    --x:0px;
+    --y:0px;
+}
+
+body{
+    background-image: url('https://plus.unsplash.com/premium_photo-1723799413646-9fb1f800cedb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGF1bnRlZHxlbnwwfHwwfHx8MA%3D%3D');
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat;
     cursor: none;
-
-}
- 
-main{
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
 }
 
-.Speech{
-  position: relative;
+.box{
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(0px at var(--x) var(--y), rgba(198, 197, 197, 0) , rgb(0, 0, 0));
+   
 }
 
-.Speech img{
-  position: relative;
-  opacity: 0;
-}
-
-h2{
-    letter-spacing: 0.125rem;
-    transform: rotate(-2deg);
-    text-shadow: 2px 2px red;
-    position: absolute;
-    top: 3.75rem;
-    margin-left: 1.8rem;
-    opacity: 0;
-}
-
-#Tom{
-  margin: 1.2px 3rem;
-   width: 18rem;
-}
-
-#Jerry{
-  height: 7rem;
-  width: 7rem;
+#cursor{
+  height: 5rem;
+  width: 5rem;
   position: fixed;
-  transform: translate(-50%,-50%);
+  transform: translate(50%,50%);
   pointer-events: none;
-}
-
-@media (max-width: 600px) {
-
-  #Tom {
-     width: 5rem;
-     height: 20rem;
-     margin: 1rem;
-  }
-
-  #Jerry {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
-
-  .Speech img {
-    width: 8rem;
-  }
-
-  h2 {
-    font-size: 0.5rem;
-    top: 2.2rem;
-    margin-left: 0.5rem;
-    letter-spacing: 0.06rem;
-  }
-}
-
-
-@media (max-width: 900px) {
-
-  h2 {
-    font-size: 1rem;
-  }
 }
