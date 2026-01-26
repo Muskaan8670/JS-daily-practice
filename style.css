@@ -8,31 +8,15 @@ html,
 body{
     height: 100%;
     width: 100%;
-}
-:root{
-    --x:0px;
-    --y:0px;
-}
-
-body{
-    background-image: url('https://plus.unsplash.com/premium_photo-1723799413646-9fb1f800cedb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGF1bnRlZHxlbnwwfHwwfHx8MA%3D%3D');
-    background-size: contain;
-    background-position: center;
-    background-repeat: repeat;
-    cursor: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
 }
 
-.box{
-    height: 100%;
-    width: 100%;
-    background: radial-gradient(0px at var(--x) var(--y), rgba(198, 197, 197, 0) , rgb(0, 0, 0));
-   
+p{
+  color: greenyellow;
+  font-size: 2rem;
 }
 
-#cursor{
-  height: 5rem;
-  width: 5rem;
-  position: fixed;
-  transform: translate(50%,50%);
-  pointer-events: none;
-}

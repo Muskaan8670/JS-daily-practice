@@ -1,30 +1,24 @@
-let cursor = document.querySelector('#cursor');
-let box = document.querySelector('.box');
+const para = document.querySelector('p');
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+const text = para.innerHTML;
 
-let x=0, y=0;
-addEventListener('mousemove',(e)=>{
-    console.log(e.clientX,e.clientY);
+para.addEventListener('mouseenter',()=>{
 
-    x = e.clientX ;
-    y = e.clientY ;
+   let iteration = 0;
 
-    console.log(x,y);
+   function randomText(){
+     let str = text.split('').map((char,index)=>{
+        if(iteration > index){
+            return char;
+        }
+        return chars.split('')[Math.floor(Math.random()*53)]
+     }).join('');
+     
+     para.innerHTML = str;
 
-    box.style.setProperty('--x', `${x}px`);
-    box.style.setProperty('--y', `${y}px`);
+     iteration += 0.2 ;
+   }
 
-    // document.body.style.setProperty('--x', e.clientX + 'px');
-    // document.body.style.setProperty('--y', e.clientY + 'px');
-
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-
-    if(e.clientY >=164 && e.clientY <= 200 && e.clientX >= 550 && e.clientX <= 800){
-         box.style.background = 'radial-gradient(300px at var(--x) var(--y), rgba(198, 197, 197, 0) , rgb(0, 0, 0))';
-         cursor.style.transform = 'translate(200%,200%)';            
-    }
-    else{
-        box.style.background = 'radial-gradient(150px at var(--x) var(--y), rgba(198, 197, 197, 0) , rgb(0, 0, 0))';
-        cursor.style.transform = 'translate(90%,90%)';
-    }
+   setInterval(randomText,30);
+   
 });
